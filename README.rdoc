@@ -1,5 +1,4 @@
-
-Travis CI: {<img src="https://travis-ci.org/rdalin82/Flight.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/rdalin82/Flight] 
+{<img src="https://travis-ci.org/rdalin82/Flight.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/rdalin82/Flight] 
 
 
 == README
