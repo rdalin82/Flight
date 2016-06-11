@@ -1,0 +1,9 @@
+<h1>Flights</h1>
+<% @flights.each do |flight| %>
+<div>
+  <h2>Flight Info </h2>
+  <p>From: <%= flight.from_airport.name %> | To: <%= flight.to_airport.name %></p>
+  <p>Start Date: <%= flight.start %> </p>
+  <p>Duration: <%= flight.duration %></p>
+</div>
+<% end %> 
