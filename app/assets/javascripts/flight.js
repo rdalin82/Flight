@@ -11,11 +11,18 @@ var main = new Vue({
     data: { 
       title: "Flight picker",
       airports: [], 
-      depart: undefined;
-      arrival: undefined;
+      depart: undefined,
+      arrival: undefined
     },
     methods: {
       getData: function(){
+      }, 
+      setDepart: function(newValue){
+        console.log(newValue);
+        this.depart = newValue;
+      }, 
+      setArrival: function(newValue){
+        this.arrival = newValue
       }
     },
     ready: function(){

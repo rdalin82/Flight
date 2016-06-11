@@ -26,20 +26,20 @@
   <h2>Vue dropdowns</h2>
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <span class="selection">Departure Airport</span>
+      <span class="selection">{{ depart || "Departure Flight" }}</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="airport in airports"><a href="#">{{ airport }}</a></li> 
+      <li v-for="airport in airports"><a href="#" v-on:click="setDepart(airport)">{{ airport }}</a></li> 
     </ul>
   </div>
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <span class="selection">Arrival Airport</span>
+      <span class="selection">{{ arrival || "Arrival Airport" }}</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="airport in airports"><a href="#">{{ airport }}</a></li> 
+      <li v-for="airport in airports"><a href="#" v-on:click="setArrival(airport)">{{ airport }}</a></li> 
     </ul>
   </div>
 </div>  
