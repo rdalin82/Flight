@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'flight' => 'flight#index'
+  get 'airport' => 'airport#index'
+
+  get 'flights' => 'flight#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

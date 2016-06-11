@@ -1,9 +1,46 @@
-<h1>Flights</h1>
-<% @flights.each do |flight| %>
-<div>
-  <h2>Flight Info </h2>
-  <p>From: <%= flight.from_airport.name %> | To: <%= flight.to_airport.name %></p>
-  <p>Start Date: <%= flight.start %> </p>
-  <p>Duration: <%= flight.duration %></p>
-</div>
-<% end %> 
+<div id="app" class="container-fluid">
+  <h1> {{ title }}</h1>
+  <h2>ERB dropdowns</h2>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="selection">Departure Airport</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <% @airports.each do |airport| %>
+      <li><a href="#"><%= airport.name %></a></li>
+      <% end %> 
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="selection">Arrival Airport</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <% @airports.each do |airport| %>
+      <li><a href="#"><%= airport.name %></a></li>
+      <% end %> 
+    </ul>
+  </div>
+  <h2>Vue dropdowns</h2>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="selection">Departure Airport</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li v-for="airport in airports"><a href="#">{{ airport }}</a></li> 
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="selection">Arrival Airport</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li v-for="airport in airports"><a href="#">{{ airport }}</a></li> 
+    </ul>
+  </div>
+</div>  
+  
