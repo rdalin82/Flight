@@ -1,11 +1,9 @@
 $(document).ready(function(){
-
   $(".dropdown li a").click(function(){
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     $(this).parents(".dropdown").find('.selection').val($(this).text());
   });
 });
-
 var main = new Vue({
     el: "#app",
     data: { 
@@ -20,10 +18,12 @@ var main = new Vue({
       getData: function(){
       }, 
       setDepart: function(newValue){
+        this.results = [];
         this.depart = newValue.name;
         this.getArrivalAirports(this.depart);
       }, 
       setArrival: function(newValue){
+        this.results = [];
         this.arrival = newValue.name;
       }, 
       getFlights: function(arrival, depart){
@@ -31,8 +31,7 @@ var main = new Vue({
         $.getJSON("/flights.json?depart="+this.depart+"&arrive="+this.arrival, function(response){
           $.each(response, function(key, value){
             flight = {}
-            // flight.depart = value.from_airport;
-            // flight.arrive = value.to_airport;
+            flight.id = value.id;
             flight.duration = value.duration;
             main.results.push(flight);
             console.log(value);
