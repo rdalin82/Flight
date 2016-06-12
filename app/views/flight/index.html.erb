@@ -1,23 +1,28 @@
 <div id="app" class="container-fluid">
   <h1> {{ title }}</h1>
   <div class="btn-group">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <button class="btn btn-primary dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       <span class="selection">{{ depart || "Departure Airport" }}</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="airport in airports"><a href="#" v-on:click="setDepart(airport)">{{ airport }}</a></li> 
+      <li v-for="airport in airports"><a href="#" v-on:click="setDepart(airport)" >{{ airport.name }}</a></li> 
     </ul>
   </div>
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       <span class="selection">{{ arrival || "Arrival Airport" }}</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="airport in airports"><a href="#" v-on:click="setArrival(airport)">{{ airport }}</a></li> 
+      <li v-for="arrival in arrivalAirports"><a href="#" v-on:click="setArrival(arrival)">{{ arrival.name }}</a></li> 
     </ul>
+    <button class="btn btn-success btn-large" type="submit" v-on:click="getFlights(depart, arrival)">Search</button>
   </div>
-  <button class="btn btn-success" type="button">Search</button>
+  <h2 v-if="results.length ==0 ">No Results</h2>
+  <h2 v-if="results.length > 0">Results</h2>
+  <ul>
+    <li v-for="result in results">{{depart}} to {{arrival}} is {{result.duration}} minutes</li>
+  </ul>
 </div>  
   

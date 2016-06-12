@@ -15,7 +15,7 @@ if !Airport.any?
 end
 
 if !Flight.any? 
-  1000.times do |entry| 
+  100000.times do |entry| 
     date = Faker::Time.between(20.days.from_now, Date.today, :all)
     start = Airport.find(rand(1..Airport.count))
     stop = Airport.find(rand(1..Airport.count))
