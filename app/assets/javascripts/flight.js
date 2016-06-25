@@ -3,6 +3,10 @@ $(document).ready(function(){
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     $(this).parents(".dropdown").find('.selection').val($(this).text());
   });
+  $('#datepicker').datepicker({dateFormat: "yy-mm-dd"});
+  $('#reset').on("click", function(){
+    window.location.reload();
+  })
 });
 var main = new Vue({
     el: "#app",
@@ -11,6 +15,7 @@ var main = new Vue({
       airports: [], 
       arrivalAirports: ["select a departure first"],
       results: [], 
+      searchCity: "",
       depart: undefined,
       arrival: undefined
     },
@@ -26,6 +31,11 @@ var main = new Vue({
         this.results = [];
         this.arrival = newValue.name;
       }, 
+      match: function(item){
+        search = main.searchCity.toUpperCase();
+        it = item.name.toUpperCase();
+        return it.includes(search);
+      },
       getFlights: function(arrival, depart){
         main.results = [];
         $.getJSON("/flights.json?depart="+this.depart+"&arrive="+this.arrival, function(response){
@@ -33,55 +43,58 @@ var main = new Vue({
             flight = {}
             flight.id = value.id;
             flight.duration = value.duration;
-            main.results.push(flight);
-            console.log(value);
+            main.results.$set(key, flight);
+            // console.log(value);
           })
         })
         .done(function(response){
-          console.log("success with flights");
+          // console.log("success with flights");
         })
         .fail(function(){
           console.log("failure with flights");
         })
         .always(function(){
-          console.log("done with flights");
+          // console.log("done with flights");
         })
       },
       getArrivalAirports: function(airport){
         main.arrivalAirports = [];
         $.getJSON("/airport.json?depart="+airport, function(response){
           $.each(response, function(key, value){
-            console.log(value.name);
-            main.arrivalAirports.push(value);
+            main.arrivalAirports.$set(key, value);
           })
         })
         .done(function(response){
 
-          console.log("success with arrival flights");
+          // console.log("success with arrival flights");
         })
         .fail(function(){
           console.log("failure arrival flights");
         })
         .always(function(){
-          console.log("All done arrival flights");
+          // console.log("All done arrival flights");
         })
       }
     },
     ready: function(){
       $.getJSON("/airport.json", function(response){
         $.each(response, function(key, value){
-          main.airports.push(value);
+          main.airports.$set(key, value);
         })
        })
         .done(function(response){
-        console.log(main.airports.length)
-        console.log("success");
+          var first = {
+            name: "Departure Flight"
+          }
+          main.airports.unshift(first);
+        // console.log(main.airports.length)
+        // console.log("success");
       })
       .fail(function(){
       console.log("failure");
       })
       .always(function(){
-      console.log("complete");
+      // console.log("complete");
     });
   }
 })
