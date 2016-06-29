@@ -25,6 +25,7 @@ var main = new Vue({
       setDepart: function(newValue){
         this.results = [];
         this.depart = newValue.name;
+        this.searchCity = newValue.name
         this.getArrivalAirports(this.depart);
       }, 
       setArrival: function(newValue){
