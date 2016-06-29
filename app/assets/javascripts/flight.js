@@ -32,7 +32,7 @@ var main = new Vue({
       }, 
       setArrival: function(newValue){
         this.results = [];
-        this.arrival = newValue.name;
+        this.arrival = newValue.name;          
       }, 
       match: function(item){
         search = main.searchCity.toUpperCase();
