@@ -1,41 +1,62 @@
-<div id="app" class="container-fluid">
-  <h1 style="color:white"> {{ title }}</h1>
-  <div class="btn-group">
-   <div class="btn btn-primary">Departure City: </div>
-   <input type="text" class="btn"  v-model="searchCity" >
+<div id="app">
+  <div class="container-fluid">
+    <h1 style="color:white"> {{ title }}</h1>
   </div>
-  <div class="btn-group">
-    <button class="btn btn-default dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <span class="selection">{{ depart || airports.filter(match)[0].name  || "Departure Airport" }}</span>
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="airport in airports.filter(match)"><a href="#" class="depart" v-on:click="setDepart(airport)" >{{ airport.name }}</a></li> 
-    </ul>
+  
+  <div class="container-fluid">
+    <div class="btn-group btn-group-md">
+     <div class="btn btn-primary">Search Departure City: </div>
+     <input type="text" class="btn"  v-model="searchCity" >
+    </div>
   </div>
-  <div class="btn-group">
-    <button class="btn btn-default dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <span class="selection">{{ arrival || "Arrival Airport" }}</span>
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li v-for="arrival in arrivalAirports"><a href="#" id="arrive" v-on:click="setArrival(arrival)">{{ arrival.name }}</a></li> 
-    </ul>
+  
+  <div class="container-fluid">
+    <div class="btn-group btn-group-md">
+      <div class="btn btn-primary">Select Departure City: </div>
+      <button class="btn btn-group-md dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="selection">{{ depart || airports.filter(match)[0].name  || "Departure Airport" }}</span>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li v-for="airport in airports.filter(match)"><a href="#" class="depart" v-on:click="setDepart(airport)" >{{ airport.name }}</a></li> 
+      </ul>
+    </div>
   </div>
-  <div class="btn-group">
-   <input type="text" class="btn" id="datepicker" value="Departure Date">
-  </div>
-  <div class="btn-group">
-    <button class="btn btn-success btn-large" type="submit" v-on:click="getFlights(depart, arrival)">Search</button>
-  </div>  
-   <div class="btn-group">
-    <button class="btn btn-danger btn-large" id="reset"><a href="/flights"></a>Reset</button>
-  </div>
-  <h2 v-if="results.length ==0 " style="color:white">No Results</h2>
-  <h2 v-if="results.length > 0" style="color:white">Results</h2>
-  <ul>
-    <li v-for="result in results" style="color:white">Flight Number: {{result.id }} | {{depart}} to {{arrival}} is {{result.duration}} minutes</li>
-  </ul>
 
+  <div class="container-fluid">
+    <div class="btn-group btn-group-md">
+      <div class="btn btn-primary">Select Arrival City:   </div>
+      <button class="btn btn-group-md dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="selection">{{ arrival || "Arrival Airport" }}</span>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li v-for="arrival in arrivalAirports"><a href="#" id="arrive" v-on:click="setArrival(arrival)">{{ arrival.name }}</a></li> 
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="btn-group btn-group-md">
+      <div class="btn btn-primary">Select Departure Date: </div>
+        <input type="text" class="btn" id="datepicker" value="Departure Date">
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="btn-group btn-group-md">
+      <button class="btn btn-success btn-large" type="submit" v-on:click="getFlights(depart, arrival)">Search</button>
+      <button class="btn btn-danger btn-large" id="reset"><a href="/flights"></a>Reset</button>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <h2 v-if="results.length ==0 " style="color:white">No Results</h2>
+    <h2 v-if="results.length > 0" style="color:white">Results</h2>
+
+   <ul>
+    <li v-for="result in results" style="color:white">Flight Number: {{result.id }} | {{depart}} to {{arrival}} is {{result.duration}} minutes</li>
+    </ul>
+  </div>
 </div>  
   
