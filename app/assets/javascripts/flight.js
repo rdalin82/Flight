@@ -13,7 +13,7 @@ var main = new Vue({
     data: { 
       title: "Flight picker",
       airports: [], 
-      arrivalAirports: [{ name: "Departure Flight 2"}],
+      arrivalAirports: [{ name: "Select Departure First"}],
       results: [], 
       searchCity: "",
       depart: {
