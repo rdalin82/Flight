@@ -13,10 +13,12 @@ var main = new Vue({
     data: { 
       title: "Flight picker",
       airports: [], 
-      arrivalAirports: ["select a departure first"],
+      arrivalAirports: [{ name: "Departure Flight 2"}],
       results: [], 
       searchCity: "",
-      depart: undefined,
+      depart: {
+        name: "Departure Flight"
+      },
       arrival: undefined
     },
     methods: {
@@ -87,7 +89,9 @@ var main = new Vue({
           var first = {
             name: "Departure Flight"
           }
-          main.airports.unshift(first);
+          if (first.hasOwnProperty("name")){
+            main.airports.unshift(first);            
+          }
         // console.log(main.airports.length)
         // console.log("success");
       })

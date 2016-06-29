@@ -14,7 +14,7 @@
     <div class="btn-group btn-group-md">
       <div class="btn btn-primary">Select Departure City: </div>
       <button class="btn btn-group-md dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span class="selection">{{ depart || airports.filter(match)[0].name  || "Departure Airport" }}</span>
+        <span class="selection">{{  airports.filter(match)[0].name || depart.name || "Departure Airport" }}</span>
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
