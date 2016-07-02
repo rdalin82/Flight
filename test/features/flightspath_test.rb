@@ -28,6 +28,6 @@ feature "flight page" do
   scenario "select departing flight", js: true do 
     visit("/flights")
     page.fill_in("searchCity" ,:with=>"string")
-    page.must_have_content "Flight"
+    page.must_have_content "MyString"
   end
 end
