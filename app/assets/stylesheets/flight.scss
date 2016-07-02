@@ -1,7 +1,23 @@
 // Place all the styles related to the flight controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-  background-image: image-url("plane.jpg");
-  background-size: cover;
+
+@import "bootstrap";
+@import "bootstrap-sprockets";
+
+@media (min-width: $screen-md-min) {
+  body {
+    width: 100%;
+    background-image: image-url("plane.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: $screen-xs-min){
+  
+  body {
+    width: 100%;
+    background-color: #353579;  
+  }
 }
