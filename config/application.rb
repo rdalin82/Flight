@@ -23,6 +23,7 @@ module OdinFlight
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.assets.cache_store = :memory
     # config.serve_static_assets = true
+    config.assets.version = '1.1'
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
