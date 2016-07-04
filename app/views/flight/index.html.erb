@@ -4,16 +4,16 @@
   </div>
   
   <div class="container-fluid">
-    <div class="btn-group btn-group-md">
+    <div class="btn-group btn-group-sm">
      <div class="btn btn-primary">Search Departure City: </div>
      <input type="text" class="btn" id="searchCity" v-model="searchCity" >
     </div>
   </div>
   
   <div class="container-fluid">
-    <div class="btn-group btn-group-md">
+    <div class="btn-group btn-group-sm" style="width:100%">
       <div class="btn btn-primary">Select Departure City: </div>
-      <button class="btn btn-group-md dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <button class="btn btn-group-sm dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span class="selection">{{  airports.filter(match)[0].name || depart.name || "Departure Airport" }}</span>
         <span class="caret"></span>
       </button>
@@ -24,9 +24,9 @@
   </div>
 
   <div class="container-fluid">
-    <div class="btn-group btn-group-md">
+    <div class="btn-group btn-group-sm">
       <div class="btn btn-primary">Select Arrival City:   </div>
-      <button class="btn btn-group-md dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <button class="btn btn-group-sm dropdown-toggle btn-large" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span class="selection">{{ arrival || "Arrival Airport" }}</span>
         <span class="caret"></span>
       </button>
@@ -37,14 +37,14 @@
   </div>
   
   <div class="container-fluid">
-    <div class="btn-group btn-group-md">
+    <div class="btn-group btn-group-sm">
       <div class="btn btn-primary">Select Departure Date: </div>
         <input type="text" class="btn" id="datepicker" value="Departure Date">
     </div>
   </div>
 
   <div class="container-fluid">
-    <div class="btn-group btn-group-md">
+    <div class="btn-group btn-group-sm">
       <button class="btn btn-success btn-large" type="submit" v-on:click="getFlights(depart, arrival)">Search</button>
       <button class="btn btn-danger btn-large" id="reset"><a href="/flights"></a>Reset</button>
     </div>
